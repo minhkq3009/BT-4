@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 
-const API_KEY = "f5ac4be4a19c47d8a3e42522222112";
+// ✅ Lấy API key từ environment variable
+const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 
 const CitySearch = ({ city, onChange }) => {
   const [input, setInput] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
-  const [isTyping, setIsTyping] = useState(false); // ✅ NEW
+  const [isTyping, setIsTyping] = useState(false);
 
   // 🎯 Gợi ý địa điểm khi gõ
   useEffect(() => {
@@ -32,14 +33,14 @@ const CitySearch = ({ city, onChange }) => {
     setInput(`${location.name}, ${location.country}`);
     setSuggestions([]);
     setShowDropdown(false);
-    setIsTyping(false); // ✅ Ngừng gợi ý
+    setIsTyping(false);
     onChange(location.name);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (input.trim()) {
-      setIsTyping(false); // ✅ Ngừng gợi ý
+      setIsTyping(false);
       onChange(input.trim());
     }
   };
@@ -52,7 +53,7 @@ const CitySearch = ({ city, onChange }) => {
           value={input}
           onChange={(e) => {
             setInput(e.target.value);
-            setIsTyping(true); // ✅ Đang gõ
+            setIsTyping(true);
           }}
           className="flex-1 px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
           placeholder="Nhập tên thành phố hoặc quốc gia..."

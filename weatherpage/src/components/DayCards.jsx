@@ -33,7 +33,7 @@ const DayCards = ({ days, selectedDate, onSelect, selectedMetric, onDoubleClick 
           onDoubleClick={()=>onDoubleClick(day)}
           >
             {/* Ngày + Nhãn */}
-            <div className="flex justify-between text-sm text-gray-500 mb-4">
+            <div className="flex justify-between text-sm text-gray-500 mb-6">
               <span>{new Date(day.date).getDate()}</span>
               <span>{day.label}</span>
             </div>
@@ -42,7 +42,7 @@ const DayCards = ({ days, selectedDate, onSelect, selectedMetric, onDoubleClick 
             {selectedMetric === "Nhiệt độ" && (
               <>
                 {/* Icon + nhiệt độ */}
-                <div className="flex items-center justify-center gap-2">
+                <div className="flex items-center justify-center gap-4">
                   <img
                     src={`https:${day.icon}`}
                     alt="weather icon"

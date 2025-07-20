@@ -64,7 +64,9 @@ const translateForecastText = (text, maxTemp) => {
 
 const WeatherWidget = ({ city }) => {
   const [weather, setWeather] = useState(null);
-  const apiKey = "f5ac4be4a19c47d8a3e42522222112";
+  
+  // ✅ Lấy API key từ environment variable
+  const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
 
   useEffect(() => {
     fetch(`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=1&aqi=no`)

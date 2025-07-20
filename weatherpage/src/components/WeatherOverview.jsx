@@ -10,7 +10,8 @@ const WeatherOverview = ({ city }) => {
   const [selectedMetric, setSelectedMetric] = useState("Nhiệt độ");
   const [modalData, setModalData] = useState(null);
 
-  const apiKey = "f5ac4be4a19c47d8a3e42522222112";
+  // ✅ Lấy API key từ environment variable
+  const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
 
   useEffect(() => {
     fetch(`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=7&aqi=no`)
